@@ -1,33 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Win32.SafeHandles;
-using Unity.Mathematics;
+﻿using System.Collections;
 using UnityEngine;
 
 public class mover : MonoBehaviour
 {
     public float speed;
-    public float jumpSpeed;
     public Animator anim;
     public Rigidbody2D rb;
-    public int jump = 0;
-
+    public int jump;
+    public float jumpForce1 = 5f;
+    public float jumpForce2 = 7f;
     public hitGround hitGround;
-    // Start is called before the first frame update
+
+    private bool isCoroutineRunning = false;  // để tránh gọi Coroutine liên tục
+
     void Start()
     {
+        jump = 0;
         rb = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-       
         float Horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Debug.Log($"{Horizontal}");
         rb.velocity = new Vector2(speed * Horizontal, rb.velocity.y);
         anim.SetFloat("mover", Mathf.Abs(Horizontal));
+
         if (Horizontal > 0)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -37,24 +35,42 @@ public class mover : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 180f, 0);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            jump = 1;
-            if (Input.GetKey(KeyCode.Space))
+            jump++;
+            hitGround.is_hitGround = false;
+            if (jump == 1)
             {
-                jump = 2;
-                if (hitGround.is_hitGround==true)
-                {
-                    jump = 0;
-                }
+                anim.SetInteger("jump", 1);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce1);
+                Debug.Log($"0{jump}");
             }
-            else if (hitGround.is_hitGround==true)
+            else if (jump == 2)
             {
-                jump = 0;
+                anim.SetInteger("jump", 2);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce2);
+                Debug.Log($"1{jump}");
             }
-
         }
+        
+        if (hitGround.is_hitGround == true && jump != 0)
+        {
+            if (!isCoroutineRunning)
+            {
+                StartCoroutine(ResetJumpAfterDelay());
+            }
+        }
+    }
 
+    IEnumerator ResetJumpAfterDelay()
+    {
+        isCoroutineRunning = true;
+        yield return new WaitForSeconds(0.2f);
 
+        anim.SetInteger("jump", 0);
+        jump = 0;
+        Debug.Log($"2{jump}");
+
+        isCoroutineRunning = false;
     }
 }

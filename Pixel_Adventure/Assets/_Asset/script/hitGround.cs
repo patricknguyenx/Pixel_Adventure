@@ -7,7 +7,7 @@ public class hitGround : MonoBehaviour
     public bool is_hitGround;
     void Start()
     {
-
+        is_hitGround = true;
     }
 
     // Update is called once per frame
