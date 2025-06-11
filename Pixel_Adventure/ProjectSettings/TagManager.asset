@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - trap
+  - movingGround
   layers:
   - Default
   - TransparentFX
@@ -45,4 +46,7 @@ TagManager:
     locked: 0
   - name: groud
     uniqueID: 2078557887
+    locked: 0
+  - name: player
+    uniqueID: 3706270729
     locked: 0

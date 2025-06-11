@@ -11,7 +11,7 @@ public class mover : MonoBehaviour
     public float jumpForce2 = 7f;
     public hitGround hitGround;
     public bool allowMovement = true;
-    
+
     private bool isCoroutineRunning = false;  // để tránh gọi Coroutine liên tục
 
     void Start()
@@ -64,7 +64,6 @@ public class mover : MonoBehaviour
                     StartCoroutine(ResetJumpAfterDelay());
                 }
             }
-        
 
         IEnumerator ResetJumpAfterDelay()
         {
@@ -84,4 +83,6 @@ public class mover : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
+    
+
 }
