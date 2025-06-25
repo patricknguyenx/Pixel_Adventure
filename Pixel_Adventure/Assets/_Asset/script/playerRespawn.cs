@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class playerRespawn : MonoBehaviour
 {
@@ -9,22 +10,23 @@ public class playerRespawn : MonoBehaviour
     private Vector3 startPos;
     public Animator anim;
     public mover movement;
-    public bool dead;
+    public resetTrap resetTrap;
+
     void Start()
     {
-        // N?u ch?a có checkpoint, dùng v? trí g?c ban ??u
         startPos = transform.position;
         if (lastCheckpointPos == Vector3.zero)
         {
             lastCheckpointPos = startPos;
+            
         }
-        dead = false;
+        resetTrap.spamTrap();
     }
-    
+
     public void Respawn()
     {
-        // D?ch chuy?n player v? checkpoint ?ã l?u
         transform.position = lastCheckpointPos;
+        resetTrap.spamTrap();
     }
 
     // Update is called once per frame
@@ -36,7 +38,7 @@ public class playerRespawn : MonoBehaviour
             Respawn();
             movement.allowMovement = true;
             anim.SetBool("hit", false);
-            dead = true;
         }
     }
+
 }

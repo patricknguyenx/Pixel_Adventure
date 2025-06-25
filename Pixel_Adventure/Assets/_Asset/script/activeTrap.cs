@@ -18,8 +18,11 @@ public class activeTrap : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
             activetrap = true;
         }
     }
+
+
 }
 

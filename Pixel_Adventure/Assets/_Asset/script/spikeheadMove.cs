@@ -8,7 +8,6 @@ public class spikeheadMove : MonoBehaviour
     public float shspeed ;       
     private Vector3 startPos;
     public activeTrap activeTrap;
-    public playerRespawn playerReset;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +20,6 @@ public class spikeheadMove : MonoBehaviour
         if (activeTrap.activetrap == true)
         {
             float newY = startPos.y + Mathf.Sin(Time.time * shspeed) * amplitude;
-            transform.position = new Vector3(startPos.x, newY, startPos.z);
-        }
-        if (activeTrap.activetrap == true && playerReset.dead)
-        {
-            float newY = startPos.y - Mathf.Sin(Time.time * shspeed) * amplitude;
             transform.position = new Vector3(startPos.x, newY, startPos.z);
         }
     }

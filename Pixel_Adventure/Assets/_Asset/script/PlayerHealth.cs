@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public Animator anim;
     public bool is_hitTrap = false;
     public mover movement;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("trap"))
