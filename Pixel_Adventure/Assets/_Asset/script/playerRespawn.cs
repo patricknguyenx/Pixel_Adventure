@@ -35,10 +35,13 @@ public class playerRespawn : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && !movement.allowMovement)
         {
-            Respawn();
-            movement.allowMovement = true;
-            anim.SetBool("hit", false);
+            reset();
         }
     }
-
+    public void reset()
+    {
+        Respawn();
+        movement.allowMovement = true;
+        anim.SetBool("hit", false);
+    }
 }
