@@ -12,6 +12,7 @@ public class spikeMove : MonoBehaviour
     private Vector2 startPos;
     private float moved = 0f;
     public activeTrap activeTrap;
+
     void Start()
     {
         startPos = transform.position;
@@ -28,5 +29,6 @@ public class spikeMove : MonoBehaviour
                 moved += step;
             }
         }
+        
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - ground
   - trap
   - movingGround
+  - fruit
+  - checkPoint
+  - End
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - ground
   - trap
   - player
-  - 
+  - background
   - 
   - 
   - 
@@ -49,4 +52,10 @@ TagManager:
     locked: 0
   - name: player
     uniqueID: 3706270729
+    locked: 0
+  - name: trap
+    uniqueID: 3404628645
+    locked: 0
+  - name: background
+    uniqueID: 2737129129
     locked: 0
