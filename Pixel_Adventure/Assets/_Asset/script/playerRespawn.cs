@@ -10,7 +10,7 @@ public class playerRespawn : MonoBehaviour
     private Vector3 startPos;
     public Animator anim;
     public mover movement;
-    public resetTrap resetTrap;
+
 
     void Start()
     {
@@ -20,20 +20,20 @@ public class playerRespawn : MonoBehaviour
             lastCheckpointPos = startPos;
             
         }
-        resetTrap.spamTrap();
+
     }
 
     public void Respawn()
     {
         transform.position = lastCheckpointPos;
-        resetTrap.spamTrap();
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R) && !movement.allowMovement)
+        if (Input.GetKeyDown(KeyCode.R) )
         {
             reset();
         }

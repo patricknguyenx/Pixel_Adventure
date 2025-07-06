@@ -22,7 +22,7 @@ public class mover : MonoBehaviour
 
     void Update()
     {
-        if (allowMovement)
+        if (allowMovement == true)
         {
 
             float Horizontal = Input.GetAxisRaw("Horizontal");
