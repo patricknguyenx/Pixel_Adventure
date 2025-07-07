@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Unity.VisualScripting.FlowStateWidget;
+
+//class PlayerData
+//{
+//    public int Score;
+//    public int Die;
+//}
 public class controllerPoint : MonoBehaviour
 {
     public Text scoreText;
@@ -48,6 +54,12 @@ public class controllerPoint : MonoBehaviour
     public void loadData()
     {
         die = PlayerPrefs.GetInt(diekey, 0);
+
+        //string json = PlayerPrefs.GetString("player_data");
+        //var data = JsonUtility.FromJson<PlayerData>(json);
+
+        //json = JsonUtility.ToJson(data);
+
     }
 
     public void ondie()
