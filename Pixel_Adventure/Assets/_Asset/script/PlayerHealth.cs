@@ -22,22 +22,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    IEnumerator DelayCount()
-    {
-        yield return new WaitForSeconds(1f);  // Delay 1 giây m?i cho ??m ti?p
-        eventdie.Invoke();
-    }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<mover>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
